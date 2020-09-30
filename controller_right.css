@@ -1,0 +1,72 @@
+/*Pull-to-Refreshを無効にする。*/
+body{
+    margin:0;
+    overscroll-behavior-y: none;
+}
+
+#myRange1, #myRange2{
+    -webkit-appearance:none;
+    background:#182005;
+    height:10px;
+    width:150px;
+    border-radius:8px;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    background:hsl(182, 90%, 61%);
+    height:50px;
+    width:20px;
+    border-radius:40%;
+    border: 1px solid rgb(66, 32, 129);
+  }
+  input[type=range]::-ms-tooltip{
+    display:none;
+  }
+  input[type=range]::-moz-range-track{
+    height:0;
+  }
+  input[type=range]::-moz-range-thumb{
+    background:#f00;
+    height:20px;
+    width:20px;
+    border:none;
+    border-radius:50%;
+  }
+  
+  #brake{
+    height:40px;
+    width:80px;
+    background-color:red;
+  }
+
+#myRange1{
+position:absolute;
+top:50%;
+transform:scale(2,2);
+left:15%;
+}
+#out1{
+transform:scale(2,2);
+position:absolute;
+top:5%;
+left:10%;
+}
+
+#myRange2{
+    position:absolute;
+    top:50%;
+    right:10%;
+    transform:scale(2,2) rotate(-90deg);
+    overscroll-behavior-y :none;
+}
+#out2{
+transform:scale(2,2);
+position:absolute;
+top:5%;
+right:10%;
+} 
+
+
+
+
+/* The parameters are as follow: matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())  */

@@ -34,7 +34,7 @@
                   <!--BRAKE-->   
                   <div class="immediatebutton">
                     <!--<input type="button" value="BRAKE" id="brake" ontouchstart="brake(2000)" ontouchmove="brake(2000)" ontouchend="brake(1500)">-->
-                    <input type="button" value="BRAKE" id="brake" ontouchstart="brake(2000)" ontouchend="brake(1500)">
+                    <input type="button" value="BRAKE" id="brake" ontouchstart="brake_on()" ontouchend="brake_off()">
                   </div>               
                 </tr>
               </tbody>
@@ -44,6 +44,8 @@
       
     </div>
 <script>
+ var brake_value = 0;
+
  var current1 = document.getElementById("myRange1");//STEERING pin12
  var output1 = document.getElementById("out1");
  output1.innerHTML = current1.value;
@@ -52,16 +54,39 @@
  var output2 = document.getElementById("out2");
  output2.innerHTML = current2.value;
 
+/***ここを付け加え*//////////
+/*計算*/
+window.onload = function(){
+  webiopi().callMacro("main11", 10);
+}
 
- webiopi().ready(function(){
+window.onload = function(){
+  webiopi().callMacro("main12", 10);
+}
+
+window.onload = function(){
+  setInterval(sendtimeout, 500);
+}
+
+function sendtimeout(){
+  webiopi.callMacro('TIMEOUT',1);
+}
+ /*webiopi().ready(function(){
    webiopi().callMacro("main",10);   //配列作成
  })
+*/
 
  //緊急停止ボタン  STOP pin21
- function brake(val){
-   webiopi().callMacro('BRAKE',val);
+ function brake_on(){
+   webiopi().callMacro('BRAKE',2000);
    navigator.vibrate([100]);
+   brake_value = 1;
 
+ }
+
+ function brake_off(){
+   webiopi().callMacro('BRAKE',1500);
+   brake_value = 0;
  }
 
  function vib1(){
@@ -76,7 +101,7 @@
      output1.innerHTML = current1.value;
      var se1 = current1.value;
      webiopi().callMacro('GET1',se1);
- };
+ }
  
  function func2($min){
     var current1 = document.getElementById("myRange1");
@@ -84,13 +109,18 @@
     var $min = current1.value;
     output1.innerHTML = current1.value;
     webiopi().callMacro('GET1',$min);
- };
+ }
 
  function func3(){
      output2.innerHTML = current2.value;
      var se2 = current2.value;
-     webiopi().callMacro('GET2',se2);
- };
+     if (brake_value == 0){
+        webiopi().callMacro('GET2',se2);
+     }else{
+       webiopi().callMacro('GET2',0);
+       console.log("ブレーキが押されています");
+     }
+ }
  
  function func4($min){
     var current2 = document.getElementById("myRange2");
@@ -98,7 +128,9 @@
     var $min = current2.value;
     output2.innerHTML = current2.value;
     webiopi().callMacro('GET2', $min);
- };
+ }
+
+ 
 </script>
   </body>
 </html>

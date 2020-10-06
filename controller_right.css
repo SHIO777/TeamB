@@ -34,8 +34,11 @@ body{
   }
   
   #brake{
-    height:40px;
-    width:80px;
+    position:absolute;
+    bottom:30%;
+    right:30%;
+    height:60px;
+    width:100px;
     background-color:red;
   }
 

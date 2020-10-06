@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>Controller for Right Handed</title>
+    <title>Controller for Left Handed</title>
     <script type="text/javascript" src="/webiopi.js"></script>
     <link rel="stylesheet" type="text/css" href="controller_left.css"> 
   </head>
@@ -20,7 +20,6 @@
                   <td class="SS1">                  
                     <div class="slidecontainer1">
                       <input type="range" min="-100" max="100" value="0" class="slider" id="myRange1" ontouchstart ="vib1()" oninput="func1()" ontouchend="func2(0)">
-                      <!--this is for brake<input type="range" min="1400" max="1700" value="1400" class="slider" id="myRange1" ontouchstart ="vib1()" oninput="func1()" ontouchend="func2(1400)">-->                                              
                     </div>  
                   </td>
                   <td id="out1"></td>
@@ -33,8 +32,7 @@
                   <td id="out2"></td>
                   <!--BRAKE-->   
                   <div class="immediatebutton">
-                    <!--<input type="button" value="BRAKE" id="brake" ontouchstart="brake(2000)" ontouchmove="brake(2000)" ontouchend="brake(1500)">-->
-                    <input type="button" value="BRAKE" id="brake" ontouchstart="brake(2000)" ontouchend="brake(1500)">
+                    <input type="button" value="BRAKE" id="brake" ontouchstart="brake_on()" ontouchend="brake_off()">
                   </div>               
                 </tr>
               </tbody>
@@ -44,6 +42,8 @@
       
     </div>
 <script>
+ var brake_value = 0;
+
  var current1 = document.getElementById("myRange1");//STEERING pin12
  var output1 = document.getElementById("out1");
  output1.innerHTML = current1.value;
@@ -52,20 +52,31 @@
  var output2 = document.getElementById("out2");
  output2.innerHTML = current2.value;
 
- webiopi().ready(function(){
-   webiopi().callMacro("main",10);   //配列作成
- })
+ webiopi().ready(calc);
+
+function calc(){
+  webiopi().callMacro("main11",1);
+  webiopi().callMacro("main12",1);
+  webiopi().callMacro("Load41",1);  //brake_freee
+  webiopi().callMacro("Load42",1);  //brake_brake
+  
+}
 
  //緊急停止ボタン  STOP pin21
- function brake(val){
-   webiopi().callMacro('BRAKE',val);
+ function brake_on(){
+   webiopi().callMacro('BRAKEon',1);
    navigator.vibrate([100]);
+   brake_value = 1;
 
+ }
+
+ function brake_off(){
+   webiopi().callMacro('BRAKEoff',1);
+   brake_value = 0;
  }
 
  function vib1(){
    navigator.vibrate([400]);
-   //console.log('vibe');
  }
  function vib2(){
    navigator.vibrate([400]);
@@ -75,7 +86,7 @@
      output1.innerHTML = current1.value;
      var se1 = current1.value;
      webiopi().callMacro('GET1',se1);
- };
+ }
  
  function func2($min){
     var current1 = document.getElementById("myRange1");
@@ -83,13 +94,17 @@
     var $min = current1.value;
     output1.innerHTML = current1.value;
     webiopi().callMacro('GET1',$min);
- };
+ }
 
  function func3(){
      output2.innerHTML = current2.value;
      var se2 = current2.value;
-     webiopi().callMacro('GET2',se2);
- };
+     if (brake_value == 0){
+        webiopi().callMacro('GET2',se2);
+     }else{
+       webiopi().callMacro('GET2',0);
+     }
+ }
  
  function func4($min){
     var current2 = document.getElementById("myRange2");
@@ -97,7 +112,9 @@
     var $min = current2.value;
     output2.innerHTML = current2.value;
     webiopi().callMacro('GET2', $min);
- };
+ }
+
+ 
 </script>
   </body>
 </html>

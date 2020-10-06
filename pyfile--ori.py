@@ -32,20 +32,19 @@ filename11 = "mini.txt" #最小値
 filename12 = "neut.txt" #中立値
 filename13 = "maxi.txt" #最大値
 #*****************************
-range11 = []
-range12 = []
+
+
+# @webiopi.macro
+# def TIMEOUT():
+#     get15 = range12[0]   #もともとget12だったけどget15に変更
+#     pi.set_servo_pulsewidth(SV_2,get15)
+#     webiopi.debug(get15)
+
+
+
 
 @webiopi.macro
-def TIMEOUT():
-    get15 = range12[0]   #もともとget12だったけどget15に変更
-    pi.set_servo_pulsewidth(SV_2,get15)
-    webiopi.debug(get15)
-
-
-
-
-@webiopi.macro
-def main11():
+def main11(range11)):
     f = open(path+filename11, "r")
     mini = int(f.read())
     f.close()
@@ -55,17 +54,20 @@ def main11():
     f = open(path+filename13, "r")
     maxi = int(f.read())
     f.close()
+    webiopi.debug(maxi)
 
     a = neutral - mini
     b = maxi - neutral
     c = float(a/100)
     d = float(b/100)
-
+    range11 = []
     for i in range(0,201):
         if i <=100:
             range11.append(int(i*c+mini))
         else:
             range11.append(int((i-100)*d+neutral))
+    webiopi.debug(range11)
+    return range11
 
 #*******neutral.html***THROTTLE********************
 filename21 = "mini_thro.txt" #最小値

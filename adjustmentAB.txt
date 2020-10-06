@@ -1,13 +1,15 @@
 A
 Steering  1150~1800, value = 1500
-Throttle  1300 ~ 2000, value = 2000これやばい
-Brake 1400 ~ 1700, value = 1400
+Throttle  2000→1300, value = 2000これやばい
+x = 50
+y = 1800
+Brake 1500 ~ 1800, value = 1500
 
 
 
 B
 Steering  1150 ~ 2000,  value = 1500
-Throttle  1500 ~ 1000
+Throttle  1500→1000
 x = 100
 y = 1400
 Brake 1500 ~ 2000

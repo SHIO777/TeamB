@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>BRAKE.html</title>
+    <script type="text/javascript" src="/webiopi.js"></script>
+    <link rel="stylesheet" type="text/css" href="adjustment_brake.css"> 
+  </head>
+  <body>
+    <div align="center">
+        <a href="menu.html" style="color:black;">menu</a><br>
+        <h3>BRAKE</h3>
+        <tr>
+          <td>
+            <img src = "brake.png" alt="slider" id="pic"> 
+            <table id="table">
+              <tbody>
+                <tr>
+                    <th align="right">状態</th><th>現在の値</th><th>パルス</th><th></th>
+                </tr>
+                <tr>
+                    <td align="right">フリー</td>
+                    <td align="center"><span id="a1"></span></td>
+                    <td align="center"><input type="number" min="1000" max="2000" id="a2"></span></td>
+                    <td><input type = "button" value="送信" id="a3" onclick="func11()"></td>
+                </tr>
+                <tr>
+                    <td align="right">ブレーキ動作時</td>
+                    <td align="center"><span id="b1"></span></td>
+                    <td align="center"><input type="number" min="1000" max="2000" id="b2"></span></td>
+                    <td><input type = "button" value="送信" id="b3" onclick="func12()"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="center"><input type="button" value="取得" id="c1" onclick="func13();func14()"></td>
+                    <td align="center"></td>
+                    <td align="center"></td>
+                </tr>   
+              </tbody>
+            </table>
+          </td>
+        </tr>
+    </div>
+<script>
+function func11(){
+    var h1 = document.getElementById("a2"); //free
+    var i1 = h1.value;
+    if (i1<1000){alert("最小値を1000以上にしてください");}
+    else if(i1>2000){alert("最小値を2000以下にしてください");}
+    else{
+        webiopi().callMacro("Send41",i1);
+        console.log(i1);
+    }
+}
+function func12(){
+    var h2 = document.getElementById("b2"); //brake
+    var i2 = h2.value;
+    if (i2<1000){alert("中立値を1000以上にしてください");}
+    else if(i2>2000){alert("中立値を2000以下にしてください");}
+    else{
+        webiopi().callMacro("Send42",i2);
+        console.log("いいね");
+    }
+}
+
+function func13(){
+    webiopi().callMacro("Load41",1, Back13);}
+function Back13(macro,args,number){
+    a1.innerHTML = number;}
+
+function func14(){
+    webiopi().callMacro("Load42",1, Back14);}
+function Back14(macro,args,number){
+    b1.innerHTML = number;}
+    
+
+
+</script>
+  </body>
+</html>
+
+
+
+    

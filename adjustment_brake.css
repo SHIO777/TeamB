@@ -1,0 +1,11 @@
+table th{
+    padding-left:30px;
+    padding-right:30px;
+  }
+  #a2,#b2{
+    width:50px;
+  }
+  #pic{
+    width:10%;
+    height:auto;
+  }

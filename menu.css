@@ -1,0 +1,43 @@
+.acd-check{
+    display: none;
+    }
+.acd-label{
+    background: #333;
+    color: #fff;
+    display: block;
+    margin-bottom:0px;
+    padding-left:25px;
+    padding-right:25px;
+    width:0px;
+}
+.acd-content{
+    height:150px;
+    width:150px;
+    transition: .5s;
+    visibility: hidden;
+}
+.acd-check:checked + .acd-label + .acd-content{
+    background-color: #6d6d6d;
+    height: 150px;
+    opacity: 1; /*透明度*/
+    visibility: visible;
+    margin-bottom:1px;
+    margin-left:1px;
+    padding-left:25px;
+    padding-right:25px;
+    width:150px;
+}
+/*
+html,body{
+overflow: hidden;
+}
+*/
+table th{
+    padding-left:30px;
+    padding-right:30px;
+  }
+.menu{
+    position:absolute;
+    top:10%;
+    right:20%;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ここにタイトル書いてね</title>
+    <script type="text/javascript" src="/webiopi.js"></script>
+    <script type="text/javascript"></script> 
+    <style type="text/css">
+            .acd-check{
+            display: none;
+            }
+            .acd-label{
+                background: #333;
+                color: #fff;
+                display: block;
+                margin-bottom:0px;
+                padding-left:25px;
+                padding-right:25px;
+                width:0px;
+            }
+            .acd-content{
+                height:150px;
+                width:150px;
+                /*border: 0px solid #333;
+                height: 0;
+                opacity: 0;
+                padding: 0 0px;*/
+                transition: .5s;
+                visibility: hidden;
+            }
+            .acd-check:checked + .acd-label + .acd-content{
+                background-color: #6d6d6d;
+                height: 150px;
+                opacity: 1; /*透明度*/
+                visibility: visible;
+                margin-bottom:1px;
+                margin-left:1px;
+                padding-left:25px;
+                padding-right:25px;
+                width:150px;
+            }
+            html,body{
+            overflow: hidden;
+            }
+    </style>
+    <link rel="stylesheet" type="text/css" href="ここにパスしていしてねcontorller.css">     
+ </head>
+ 
+ <body>
+     <!--メニューのやつ-->
+     <!--<link rel="stylesheet" type="text/css" href="menu-acodion.css">-->
+     <input type="checkbox" id="acd-check1" class="acd-check">
+     <label class="acd-label" for="acd-check1">♪</label>
+     <div class="acd-content">
+         <a href="menu.html" style="color:#fff;">Menu</a><br>
+         <a href="controller_right.html" style="color:#fff;">Right-handed</a><br>
+         <a href="controller_left.html" style="color:#fff;">Left-handed</a><br>
+         <a href="adjustment_steering.html" style="color:#fff;">Adjustment_STE</a><br>
+         <a href="adjustment_throttle.html" style="color:#fff;">Adjustment_THR</a><br>
+         <a href="adjustment_brake.html" style="color:#fff;">Adjustment_BRA</a><br>
+         <a href="power.html" style="color:#fff;">Power</a>
+     </div>
+ </body>
+</head>
+<body>
+
+<script>
+
+</script>
+    
+</body>
+</html>

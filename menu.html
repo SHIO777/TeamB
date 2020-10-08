@@ -1,71 +1,145 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ここにタイトル書いてね</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>menu.html</title>
     <script type="text/javascript" src="/webiopi.js"></script>
-    <script type="text/javascript"></script> 
-    <style type="text/css">
-            .acd-check{
-            display: none;
-            }
-            .acd-label{
-                background: #333;
-                color: #fff;
-                display: block;
-                margin-bottom:0px;
-                padding-left:25px;
-                padding-right:25px;
-                width:0px;
-            }
-            .acd-content{
-                height:150px;
-                width:150px;
-                /*border: 0px solid #333;
-                height: 0;
-                opacity: 0;
-                padding: 0 0px;*/
-                transition: .5s;
-                visibility: hidden;
-            }
-            .acd-check:checked + .acd-label + .acd-content{
-                background-color: #6d6d6d;
-                height: 150px;
-                opacity: 1; /*透明度*/
-                visibility: visible;
-                margin-bottom:1px;
-                margin-left:1px;
-                padding-left:25px;
-                padding-right:25px;
-                width:150px;
-            }
-            html,body{
-            overflow: hidden;
-            }
-    </style>
-    <link rel="stylesheet" type="text/css" href="ここにパスしていしてねcontorller.css">     
- </head>
- 
- <body>
-     <!--メニューのやつ-->
-     <input type="checkbox" id="acd-check1" class="acd-check">
-     <label class="acd-label" for="acd-check1">♪</label>
-     <div class="acd-content">
-         <a href="controller_right.html" style="color:#fff;">Right-handed</a><br>
-         <a href="controller_left.html" style="color:#fff;">Left-handed</a><br>
-         <a href="adjustment_steering.html" style="color:#fff;">Adjustment_STE</a><br>
-         <a href="adjustment_throttle.html" style="color:#fff;">Adjustment_THR</a><br>
-         <a href="adjustment_brake.html" style="color:#fff;">Adjustment_BRA</a><br>
-         <a href="power.html" style="color:#fff;">Power</a>
-     </div>
- </body>
-</head>
-<body>
 
+    <link rel="stylesheet" type="text/css" href="menu.css"> 
+    
+  </head>
+  <body>
+    <input type="checkbox" id="acd-check1" class="acd-check">
+    <label class="acd-label" for="acd-check1">♪</label>
+    <div class="acd-content">
+        <a href="controller_right.html" style="color:#fff;">Right-handed</a><br>
+        <a href="controller_left.html" style="color:#fff;">Left-handed</a><br>
+        <a href="adjustment_steering.html" style="color:#fff;">Adjustment_STE</a><br>
+        <a href="adjustment_throttle.html" style="color:#fff;">Adjustment_THR</a><br>
+        <a href="adjustment_brake.html" style="color:#fff;">Adjustment_BRA</a><br>
+        <a href="power.html" style="color:#fff;">Power</a>
+    </div>
+    <div class="menu" align="center">
+        <h3>Team A</h3>
+        <tr>
+          <td>
+            <table id="table1" border="2">
+                <caption>STEERING</caption>
+              <tbody>
+                <tr> 
+                    <th align="center">最小値</th><th>中立値</th><th>最大値</th>
+                </tr>
+                <tr>
+                    <td align="center"><span id="a1"></span></td>
+                    <td align="center"><span id="a2"></span></td>
+                    <td align="center"><span id="a3"></span></td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <table id="table2" border="2">
+                <caption>THROTTLE</caption>
+                <tbody>
+                  <tr> 
+                      <th align="center">最小値</th><th>最大値</th><th>x</th><th>y</th>
+                  </tr>
+                  <tr>
+                      <td align="center"><span id="b1"></span></td>
+                      <td align="center"><span id="b2"></span></td>
+                      <td align="center"><span id="b3"></span></td>
+                      <td align="center"><span id="b4"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              <table id="table3" border="2">
+                <caption>BRAKE</caption>
+                <tbody>
+                  <tr> 
+                      <th align="center">フリー</th><th>動作時</th>
+                  </tr>
+                  <tr>
+                      <td align="center"><span id="c1"></span></td>
+                      <td align="center"><span id="c2"></span></td>
+                  </tr>
+                </tbody>
+            </table>
+            <br>
+            <!--<table id="table4">
+                <tbody>
+                <tr>
+                    <td>コントローラー</td>
+                    <td align="center"><a href="controller_right.html" style="color:black;">RIGHT</a><br></span></td>
+                    <td align="center"><a href="controller_left.html" style="color:black;">LEFT</a><br></span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>調整</td>
+                    <td align="center"><a href="adjustment_steering.html" style="color:black;">STEERING</a><br></span></td>
+                    <td align="center"><a href="adjustment_throttle.html" style="color:black;">THROTTLE</a><br></span></td>
+                    <td align="center"><a href="adjustment_brake.html" style="color:black;">BRAKE</a><br></span></td>
+                </tr>
+                <tr>
+                    <td>電源</td>
+                    <td align="center"><a href="power.html" style="color:black;">POWER</a><br></span></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>-->
+              </table>
+          </td>
+        </tr>
+    </div>
+    
 <script>
+webiopi().ready(R1);
+
+function R1(){
+    webiopi().callMacro("Load11",1,Back11);
+    webiopi().callMacro("Load12",1,Back12);
+    webiopi().callMacro("Load13",1,Back13);
+    webiopi().callMacro("Load31",1,Back21);
+    webiopi().callMacro("Load32",1,Back22);
+    webiopi().callMacro("Load33",1,Back23);
+    webiopi().callMacro("Load34",1,Back24);
+    webiopi().callMacro("Load41",1,Back31);
+    webiopi().callMacro("Load42",1,Back32);
+}
+
+function Back11(macro,args,number){
+    a1.innerHTML = number;
+}
+function Back12(macro,args,number){
+    a2.innerHTML = number;
+}
+function Back13(macro,args,number){
+    a3.innerHTML = number;
+}
+function Back21(macro,args,number){
+    b1.innerHTML = number;
+}
+function Back22(macro,args,number){
+    b2.innerHTML = number;
+}
+function Back23(macro,args,number){
+    b3.innerHTML = number;
+}
+function Back24(macro,args,number){
+    b4.innerHTML = number;
+}
+function Back31(macro,args,number){
+    c1.innerHTML = number;
+}
+function Back32(macro,args,number){
+    c2.innerHTML = number;
+}
 
 </script>
-    
-</body>
+  </body>
 </html>
+
+
+
+    

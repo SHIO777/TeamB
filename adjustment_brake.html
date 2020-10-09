@@ -24,13 +24,13 @@
                     <td align="right">フリー</td>
                     <td align="center"><span id="a1"></span></td>
                     <td align="center"><input type="number" min="1000" max="2000" id="a2"></span></td>
-                    <td><input type = "button" value="送信" id="a3" onclick="func11()"></td>
+                    <td><input type = "button" value="送信" id="a3" onclick="func11();func13()"></td>
                 </tr>
                 <tr>
                     <td align="right">ブレーキ動作時</td>
                     <td align="center"><span id="b1"></span></td>
                     <td align="center"><input type="number" min="1000" max="2000" id="b2"></span></td>
-                    <td><input type = "button" value="送信" id="b3" onclick="func12()"></td>
+                    <td><input type = "button" value="送信" id="b3" onclick="func12();func14()"></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -68,13 +68,16 @@ function func12(){
 function func13(){
     webiopi().callMacro("Load41",1, Back13);}
 function Back13(macro,args,number){
-    a1.innerHTML = number;}
+    a1.innerHTML = number;
+    webiopi().callMacro("BRAKEoff",number);
+  }
 
 function func14(){
     webiopi().callMacro("Load42",1, Back14);}
 function Back14(macro,args,number){
-    b1.innerHTML = number;}
-    
+    b1.innerHTML = number;
+  }
+  
 
 
 </script>

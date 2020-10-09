@@ -5,4 +5,6 @@ table th{
   #b1,#b2,#b3,#b4{
     width:50px;
   }
-  
+#Graph{
+  background-color: cyan;
+}

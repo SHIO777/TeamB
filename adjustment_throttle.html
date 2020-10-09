@@ -14,7 +14,8 @@
         <h3>THROTTLE</h3>
         <tr>
           <td>
-            <img src = "slider.png" alt="slider" id="pic"> 
+            <input type="button" value="グラフを表示" id="Graph" onclick="Graph()">
+            <img src="graph2.png" id="G" width=300 border="0" align="center">
             <table id="table">
               <tbody>
                 <tr>
@@ -37,10 +38,10 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td align="center"><input type="button" id="d1" value="送信" onclick="func21();func32()"></td>
-                    <td align="center"><input type="button" id="d2" value="送信" onclick="func22()"></td>
-                    <td align="center"><input type="button" id="d3" value="送信" onclick="func23()"></td>
-                    <td align="center"><input type="button" id="d3" value="送信" onclick="func24()"></td>
+                    <td align="center"><input type="button" id="d1" value="送信" onclick="func21();func11()"></td>
+                    <td align="center"><input type="button" id="d2" value="送信" onclick="func22();func12()"></td>
+                    <td align="center"><input type="button" id="d3" value="送信" onclick="func23();func13()"></td>
+                    <td align="center"><input type="button" id="d3" value="送信" onclick="func24();func14()"></td>
                 </tr>   
               </tbody>
             </table>
@@ -48,12 +49,21 @@
         </tr>
     </div>
 <script>
-
+function Graph(){
+    webiopi().callMacro("GetGraph");
+    Display();
+}
+function Display(){
+    document.getElementById("G").src="graph2.png?"+(new Date()-0);
+}
 function func11(){
     var g1 = document.getElementById("a1");
     webiopi().callMacro("Load31",1, Back11);}
 function Back11(macro,args,number){
-    a1.innerHTML = number;}
+    a1.innerHTML = number;
+    webiopi().callMacro("main12",1);
+    webiopi().callMacro("GET2",0);
+}
 
 function func12(){
     var g2 = document.getElementById("a2");
@@ -115,10 +125,6 @@ function func24(){
     }
 }
 
-function func32(){
-    webiopi().callMacro("GET2",0);
-    //console.log("a");
-}
 
 </script>
   </body>

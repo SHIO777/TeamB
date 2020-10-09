@@ -3,7 +3,6 @@ import webiopi
 import time
 import pigpio
 import subprocess as proc
-import datetime
 
 webiopi.setDebug()
 pi=pigpio.pi()
@@ -34,6 +33,8 @@ filename13 = "maxi.txt" #最大値
 #*****************************
 @webiopi.macro
 def main11(val):
+    global range11
+    range11=[]
     f = open(path+filename11, "r")
     mini = int(f.read())
     f.close()
@@ -65,6 +66,8 @@ filename24 = "y_thro.txt" #傾き変わる点(y)
 #*****************************
 @webiopi.macro
 def main12(val):
+    global range12
+    range12=[]
     f = open(path+filename21, "r")
     mini21 = int(f.read())
     f.close()
@@ -171,6 +174,9 @@ def Send23(val):
 
 #**************************************
 #******ページに表示するadjustment_throttle.html******************
+@webiopi.macro
+def GetGraph():
+    proc.call("sudo killall sudo")
 
 @webiopi.macro
 def Load31(val):
@@ -241,7 +247,7 @@ def Load42(val):
     f = open(path+filename42, "r")
     brake_brake = int(f.read())
     f.close()
-    webiopi.debug("ブレーキは"+str(brake_brake))
+    #webiopi.debug("ブレーキは"+str(brake_brake))
     return "%d"%(brake_brake)
     
 

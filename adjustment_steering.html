@@ -45,6 +45,13 @@
         </tr>
     </div>
 <script>
+webiopi().ready(R1);
+
+function R1(){
+    webiopi().callMacro("Load11",1,Back11);
+    webiopi().callMacro("Load12",1,Back12);
+    webiopi().callMacro("Load13",1,Back13);
+}
 
 function func11(){
     var g1 = document.getElementById("a1");

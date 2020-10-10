@@ -38,10 +38,10 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td align="center"><input type="button" id="d1" value="送信" onclick="func21();func11()"></td>
-                    <td align="center"><input type="button" id="d2" value="送信" onclick="func22();func12()"></td>
-                    <td align="center"><input type="button" id="d3" value="送信" onclick="func23();func13()"></td>
-                    <td align="center"><input type="button" id="d3" value="送信" onclick="func24();func14()"></td>
+                    <td align="center"><input type="button" id="d1" value="送信" onclick="func21();func11();Graph()"></td>
+                    <td align="center"><input type="button" id="d2" value="送信" onclick="func22();func12();Graph()"></td>
+                    <td align="center"><input type="button" id="d3" value="送信" onclick="func23();func13();Graph()"></td>
+                    <td align="center"><input type="button" id="d3" value="送信" onclick="func24();func14();Graph()"></td>
                 </tr>   
               </tbody>
             </table>
@@ -49,6 +49,15 @@
         </tr>
     </div>
 <script>
+webiopi().ready(R1);
+
+function R1(){
+    webiopi().callMacro("Load31",1,Back11);
+    webiopi().callMacro("Load32",1,Back12);
+    webiopi().callMacro("Load33",1,Back13);
+    webiopi().callMacro("Load34",1,Back14);
+}
+
 function Graph(){
     webiopi().callMacro("GetGraph");
     Display();

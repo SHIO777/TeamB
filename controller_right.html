@@ -65,6 +65,7 @@ function calc(){
  //緊急停止ボタン  STOP pin21
  function brake_on(){
    webiopi().callMacro('BRAKEon',1);
+   webiopi().callMacro('GET2',0);
    navigator.vibrate([100]);
    brake_value = 1;
 
@@ -73,6 +74,7 @@ function calc(){
  function brake_off(){
    webiopi().callMacro('BRAKEoff',1);
    brake_value = 0;
+   func3();
  }
 
  function vib1(){

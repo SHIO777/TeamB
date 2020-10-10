@@ -24,9 +24,9 @@ def setup():
 filename41 = "brake_free.txt"
 filename42 = "brake_brake.txt"
 
-
+Graph="Graph.py"
 #*******neutral.html***STEERING********************
-path = "/home/pi/Desktop/TeamA/"  #適当なパスを指定
+path = "/home/pi/Desktop/TeamB/"  #適当なパスを指定
 filename11 = "mini.txt" #最小値
 filename12 = "neut.txt" #中立値
 filename13 = "maxi.txt" #最大値
@@ -176,7 +176,9 @@ def Send23(val):
 #******ページに表示するadjustment_throttle.html******************
 @webiopi.macro
 def GetGraph():
-    proc.call("sudo killall sudo")
+    proc.call("sudo killall sudo", shell=True)
+    proc.call("sudo python3 "+path+Graph+" &", shell=True)
+    #  proc.call("sudo python3 /home/pi/Desktop/TeamB/Graph.py &", shell=True)
 
 @webiopi.macro
 def Load31(val):

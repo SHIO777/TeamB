@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import subprocess as proc
 
-
-path = "/home/pi/Desktop/TeamB/" 
+path0 = "/home/pi/Desktop/TeamB/"
+path = path0 + "parameter/" 
 graphfile1 = "graph1.png"
 graphfile2 = "graph2.png"
 filename21 = "mini_thro.txt" #最小値
@@ -48,13 +48,13 @@ def makeGraph():
     plt.ylim([1000,2000])
     plt.plot(x, range12)
     
-    plt.savefig(path+graphfile1)
+    plt.savefig(path0+graphfile1)
     plt.close("all")
 
 def main():
     makeGraph()
-    aaa=path+graphfile1
-    bbb=path+graphfile2
+    aaa=path0+graphfile1
+    bbb=path0+graphfile2
     ccc = "sudo cp "+aaa+" "+bbb
     #proc.call("sudo cp "+path+graphfile1 path+graphfile2, shell=True)
     proc.call(ccc, shell=True)
